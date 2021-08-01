@@ -74,8 +74,8 @@ if "%ReturnCode%"=="2" (
 
 
 ECHO Patching AM2R.exe...
-REM utilities\floating\flips.exe --apply patch_data\AM2R.bps %output%\data.win %output%\AM2R.exe
-utilities\xdelta\xdelta3.exe -f -d -s %output%\data.win patch_data\AM2R.xdelta %output%\AM2R.exe
+REM utilities\floating\flips.exe --apply data\AM2R.bps %output%\data.win %output%\AM2R.exe
+utilities\xdelta\xdelta3.exe -f -d -s %output%\data.win data\AM2R.xdelta %output%\AM2R.exe
 ECHO.
 
 if not "%ErrorLevel%"=="0" (
@@ -102,7 +102,7 @@ if not "%ErrorLevel%"=="0" (
 
 
 ECHO Copying patch files...
-xcopy /s /v /y /q patch_data\files_to_copy %output%
+xcopy /s /v /y /q data\files_to_copy %output%
 
 Call :YesNoBox "Install high quality in-game music? Increases filesize by 194 MB!"
 
@@ -111,7 +111,7 @@ if "%YesNo%"=="6" (
 	
 	ECHO.
 	ECHO Copying high quality music...
-	xcopy /s /v /y /q patch_data\HDR_HQ_in-game_music %output%
+	xcopy /s /v /y /q data\HDR_HQ_in-game_music %output%
 )
 
 
@@ -121,15 +121,15 @@ IF "%ReturnCode%"=="2" (
 	ECHO.
 	ECHO Packaging Android APK...
 
-	xcopy /s /v /y /q patch_data\android\AM2RWrapper.apk utilities\android > nul
+	xcopy /s /v /y /q data\android\AM2RWrapper.apk utilities\android > nul
 
 	move %output% utilities\android\assets > nul
 	
-	xcopy /s /v /y /q patch_data\android\AM2R.ini utilities\android\assets > nul
+	xcopy /s /v /y /q data\android\AM2R.ini utilities\android\assets > nul
 	
 	ECHO Patching game.droid...
-	REM utilities\floating\flips.exe --apply patch_data\droid.bps utilities\android\assets\AM2R.exe utilities\android\assets\game.droid
-	utilities\xdelta\xdelta3.exe -f -d -s utilities\android\assets\data.win patch_data\droid.xdelta utilities\android\assets\game.droid
+	REM utilities\floating\flips.exe --apply data\droid.bps utilities\android\assets\AM2R.exe utilities\android\assets\game.droid
+	utilities\xdelta\xdelta3.exe -f -d -s utilities\android\assets\data.win data\droid.xdelta utilities\android\assets\game.droid
 
 	call utilities\android\apk_package_assets.bat
 
