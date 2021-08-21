@@ -741,6 +741,7 @@ CHANGELOG
 - Made the default volume quieter. This will not affect any existing settings, but should be more gracious towards new players' ears and speakers.
 - Changed pseudo-Screw Attack behavior to retain the charge when spaceboosting through enemies.
 - Added localization author display to the Display menu.
+- Added Portuguese, Brazilian Portuguese, Ukranian, and Swedish localizations.
 - Reworked the credits for timing and readability concerns.
 - Implemented behavior for EMP effects on Sensitivity Mode.
 - Linux fixes: 
@@ -763,6 +764,7 @@ CHANGELOG
 - Fixed incorrect drawing behavior for some Title menu options.
 - Fixed crash when opening the Extras menu on certain devices.
 - Fixed frozen enemy hitsound stacking.
+- Other misc. fixes.
 - Added Ridley?
 
 
@@ -840,14 +842,12 @@ YellowAfterlife
 
 Continued Revisions
 
-Lead - Former
+Development
 Gatordile
 Alex 'Wanderer' Mack
-
-Lead
 Lojemiru
 
-Development
+Programming
 Craig Kostelecky
 Metroid3D
 
@@ -859,6 +859,23 @@ ShirtyScarab
 Cooper Garvin
 Chris 'Messianic' Oliveira
 ChloePlz
+
+Localization
+Imsu, Diegomg
+m3Zz, LPCaiser
+Miepee, unknown
+fedprod, ReNext
+LetsPlayNintendoITA
+SadNES cITy e Vecna
+Atver, Gponys
+DarkEspeon, Vectrex28
+R3VOWOOD, Ritinha
+LiveLM, pMega0n
+peachflavored, Katherine_S2003
+PanHooHa, realgard
+Mister Bond, joe_urahara
+RippeR1692, LudvigNG
+Andréas
 
 Special Thanks
 Banjo, Grom PE
