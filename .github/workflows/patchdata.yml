@@ -24,7 +24,7 @@ jobs:
             wget -c https://github.com/tcnksm/ghr/releases/download/v0.14.0/ghr_v0.14.0_linux_amd64.tar.gz
             tar xfv ghr_v0.14.0_linux_amd64.tar.gz
             cd PatchData
-            ../ghr_v0.14.0_linux_amd64/ghr -n  "Patchdata $GITHUB_RUN_NUMBER" -b "PatchData folder for commit ${{ github.event.head_commit.id }}. Can be used with the AM2RLauncher." $zipname "../$zipname"
+            ../ghr_v0.14.0_linux_amd64/ghr -n  "Patchdata V$GITHUB_RUN_NUMBER" -b "PatchData folder for commit ${{ github.event.head_commit.id }}. Can be used with the AM2RLauncher." Patchdata-v$GITHUB_RUN_NUMBER "../$zipname"
             mv ../PatchData ../${{ github.event.repository.name }}
             
         env:
