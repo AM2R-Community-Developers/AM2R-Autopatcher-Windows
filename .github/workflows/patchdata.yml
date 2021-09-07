@@ -18,7 +18,7 @@ jobs:
             ls -al
             cd ..
             mv ${{ github.event.repository.name }} "PatchData"
-            zipname="PatchData-$GITHUB_RUN_NUMBER.zip"
+            zipname="PatchData-$((21+$GITHUB_RUN_NUMBER)).zip"
             echo "Saving as $zipname"
             zip -r $zipname ./PatchData
             wget -c https://github.com/tcnksm/ghr/releases/download/v0.14.0/ghr_v0.14.0_linux_amd64.tar.gz
