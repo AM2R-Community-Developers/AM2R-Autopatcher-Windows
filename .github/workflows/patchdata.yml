@@ -18,13 +18,13 @@ jobs:
             ls -al
             cd ..
             mv ${{ github.event.repository.name }} "PatchData"
-            zipname="PatchData-$((21+$GITHUB_RUN_NUMBER)).zip"
+            zipname="PatchData-V$((21+$GITHUB_RUN_NUMBER)).zip"
             echo "Saving as $zipname"
             zip -r $zipname ./PatchData
             wget -c https://github.com/tcnksm/ghr/releases/download/v0.14.0/ghr_v0.14.0_linux_amd64.tar.gz
             tar xfv ghr_v0.14.0_linux_amd64.tar.gz
             cd PatchData
-            ../ghr_v0.14.0_linux_amd64/ghr -n  "Patchdata V$GITHUB_RUN_NUMBER" -b "PatchData folder for commit ${{ github.event.head_commit.id }}. Can be used with the AM2RLauncher." Patchdata-v$GITHUB_RUN_NUMBER "../$zipname"
+            ../ghr_v0.14.0_linux_amd64/ghr -n  "Patchdata V$((21+$GITHUB_RUN_NUMBER))" -b "PatchData folder for commit ${{ github.event.head_commit.id }}. Can be used with the AM2RLauncher." Patchdata-v$((21+$GITHUB_RUN_NUMBER)) "../$zipname"
             mv ../PatchData ../${{ github.event.repository.name }}
             
         env:
