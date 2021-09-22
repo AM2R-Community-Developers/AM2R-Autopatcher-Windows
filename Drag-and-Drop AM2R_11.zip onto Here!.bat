@@ -73,9 +73,8 @@ if "%ReturnCode%"=="2" (
 )
 
 
-ECHO Patching AM2R.exe...
-REM utilities\floating\flips.exe --apply data\AM2R.bps %output%\data.win %output%\AM2R.exe
-utilities\xdelta\xdelta3.exe -f -d -s %output%\data.win data\AM2R.xdelta %output%\AM2R.exe
+ECHO Patching data.win...
+utilities\xdelta\xdelta3.exe -f -d -s %output%\data.win data\data.xdelta %output%\data.win
 ECHO.
 
 if not "%ErrorLevel%"=="0" (
@@ -88,7 +87,9 @@ if not "%ErrorLevel%"=="0" (
 	exit /b
 )
 
-REM del /q %output%\data.win
+ECHO Patching AM2R.exe...
+utilities\xdelta\xdelta3.exe -f -d -s %output%\AM2R.exe data\AM2R.xdelta %output%\AM2R.exe
+ECHO.
 
 if not "%ErrorLevel%"=="0" (
 	ECHO Patching failed!
