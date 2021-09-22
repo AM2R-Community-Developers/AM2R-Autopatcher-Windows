@@ -1,9 +1,9 @@
 @ECHO OFF
-SET version=15_2
+SET version=15_5
 
 REM AM2R Patching Utility
 REM Written by Wanderer
-REM Maintained by Lojical
+REM Maintained by Lojemiru
 
 SET output=AM2R_%version%
 
@@ -35,6 +35,8 @@ echo.
 if "%~x1" == ".zip" (
 	ECHO Extracting AM2R_11.zip to %output%...
 	utilities\7za920\7za.exe x "%~1" -y -o%output% > nul
+	move %output%\AM2R.exe %output%\AM2R.exe_old > nul
+	move %output%\data.win %output%\data.win_old > nul
 ) else (
 	ECHO Copying AM2R_11 to %output%...
 	MD %output%
@@ -74,7 +76,8 @@ if "%ReturnCode%"=="2" (
 
 
 ECHO Patching data.win...
-utilities\xdelta\xdelta3.exe -f -d -s %output%\data.win data\data.xdelta %output%\data.win
+utilities\xdelta\xdelta3.exe -f -d -s %output%\data.win_old data\data.xdelta %output%\data.win
+del %output%\data.win_old
 ECHO.
 
 if not "%ErrorLevel%"=="0" (
@@ -88,7 +91,8 @@ if not "%ErrorLevel%"=="0" (
 )
 
 ECHO Patching AM2R.exe...
-utilities\xdelta\xdelta3.exe -f -d -s %output%\AM2R.exe data\AM2R.xdelta %output%\AM2R.exe
+utilities\xdelta\xdelta3.exe -f -d -s %output%\AM2R.exe_old data\AM2R.xdelta %output%\AM2R.exe
+del %output%\AM2R.exe_old
 ECHO.
 
 if not "%ErrorLevel%"=="0" (
@@ -139,10 +143,6 @@ IF "%ReturnCode%"=="2" (
 	rmdir /s /q utilities\android\assets
 
 	move utilities\android\AM2RWrapper-aligned-debugSigned.apk AndroidM2R_%version%-signed.apk > nul
-)
-
-if "%ReturnCode%"=="1" (
-    del /q %output%\data.win
 )
 
 ECHO.
