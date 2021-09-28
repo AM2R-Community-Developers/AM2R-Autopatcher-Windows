@@ -132,9 +132,11 @@ IF "%ReturnCode%"=="2" (
 	
 	xcopy /s /v /y /q data\android\AM2R.ini utilities\android\assets > nul
 	
-	ECHO Patching game.droid...
+	REM ECHO Patching game.droid...
 	REM utilities\floating\flips.exe --apply data\droid.bps utilities\android\assets\AM2R.exe utilities\android\assets\game.droid
-	utilities\xdelta\xdelta3.exe -f -d -s utilities\android\assets\data.win data\droid.xdelta utilities\android\assets\game.droid
+	REM utilities\xdelta\xdelta3.exe -f -d -s utilities\android\assets\data.win data\droid.xdelta utilities\android\assets\game.droid
+	del /q utilities\android\assets\AM2R.exe
+	move utilities\android\assets\data.win utilities\android\assets\game.droid > nul
 
 	call utilities\android\apk_package_assets.bat
 
